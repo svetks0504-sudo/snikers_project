@@ -1,0 +1,8 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 13vw;
+    background-color: rgba(59, 60, 61, 1);
+    color: white;
+}

@@ -25,6 +25,11 @@ const [value, setValue] = useState(0);
     {linkArray.map((elem, index) => {
         return (
 <BottomNavigationAction key={index} 
+sx={{backgroundColor: "rgba(59, 60, 61, 1)",
+    color: "rgba(255, 255, 255, 0.5)",
+    "&.Mui-selected": {
+color: "#fff"}
+}}
 label={elem.title}
 component={NavLink}//в “component prop” меняем корневой елемент
 to={elem.to}  />
