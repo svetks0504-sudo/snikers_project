@@ -1,19 +1,16 @@
 import ProductsContext from "../../context";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import styles from './styles.module.css';
 import { Box,
-  CardActionArea,
   CardMedia,
   CardContent,
-  Typography,
   Button,
-  Card,
   CardActions
  } from "@mui/material";
 
 
 function Main(){
-  const {cartData} = useContext(ProductsContext);
+  const {addToCart, products} = useContext(ProductsContext);
 
     return (
       <div className={styles.mainContainer}>
@@ -32,7 +29,7 @@ function Main(){
     borderTop: "1px solid rgba(234, 234, 234, 1)" ,
     alignItems: "center"}}>
 
-    {cartData.map((elem)=>{
+    {products.map((elem)=>{
        return (
        <div key={elem.id} 
        className={styles.cart}
@@ -60,7 +57,7 @@ function Main(){
         <p className={styles.priceText}>ЦЕНА:</p>
         <p className={styles.price}>{elem.price} €</p>
         </div>
-        <Button
+        <Button onClick={()=>{addToCart(elem.id)}}
         variant="contained"
         sx={{fontSize: "1.2rem",
           borderRadius: "50%",

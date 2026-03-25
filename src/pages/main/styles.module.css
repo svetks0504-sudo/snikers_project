@@ -1,5 +1,6 @@
 .mainContainer{
     padding: 0 13vw;
+    flex: 1;
 }
 .imgMain{
     max-height: 28vw;
