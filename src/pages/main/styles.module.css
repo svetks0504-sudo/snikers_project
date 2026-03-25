@@ -1,0 +1,37 @@
+.mainContainer{
+    padding: 0 13vw;
+}
+.imgMain{
+    max-height: 28vw;
+    max-width: 74vw;
+    margin-top: 28px;
+}
+.mainTitle{
+    padding-top: 3.5vw;
+    font-size: 36px;
+}
+.cart{
+    max-height: 393px;
+    width: 386px;
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 42px;
+    flex-direction: column;
+    justify-content:  content; 
+    align-items: center;
+    padding: 2.5vw 3vw 2vw 39px;
+}
+.cartName{
+    font-weight: 100;
+}
+.priceContainer{
+    display: flex;
+    flex-direction: column;
+}
+.priceText{
+    font-size: 18px;
+    color: rgba(102, 102, 102, 1);
+}
+.price{
+    font-weight: 600;
+}
