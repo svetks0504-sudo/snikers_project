@@ -67,7 +67,7 @@ function Main(){
           height: "30px",
           minWidth: "30px",
           backgroundColor: "rgba(233, 233, 233, 0.5)",
-          "&.MuiButton-colorPrimary:hover":{
+          "&:hover":{
             backgroundColor: "black",
           color: "white"} 
         }} >
