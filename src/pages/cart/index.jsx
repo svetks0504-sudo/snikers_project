@@ -12,9 +12,6 @@ function Cart() {
     return cartData.map((elem) => render(elem));
   }
 
-  useEffect(() => {
-    fetchCartData();
-  }, []);
 
   function sumPrice() {
     return cartData.reduce((acc, elem) => {

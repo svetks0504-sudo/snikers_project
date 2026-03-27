@@ -28,13 +28,13 @@ function ProductProvider({ children }) {
       const product = products.find((elem) => elem.id === id);
       if (!product) return;
 
-      const response = await axios.post(`${BASE_URL}/cartData`, {
+      await axios.post(`${BASE_URL}/cartData`, {
         name: product.name,
         image: product.image,
         price: product.price
       });
 
-        setCartData((prev)=>[...prev, response.data]);
+        fetchCartData();
     
     }catch (error){
       console.log(error)
@@ -45,7 +45,7 @@ function ProductProvider({ children }) {
   const deleteFromCart = async (id) => {
   try {
     await axios.delete(`${BASE_URL}/cartData/${id}`)
-    setCartData(prev => prev.filter((elem) => elem.id !== id)) ;
+    fetchCartData();
   
 }catch(error){
   console.log(error)
