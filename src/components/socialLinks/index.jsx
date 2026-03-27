@@ -15,12 +15,13 @@ function SocialLinks(){
       }}
       onClick={preventDefault}
     >
-      <IconButton
+      <IconButton 
         component="a"
         href="https://facebook.com"
         target="_blank"
       >
-        <img src="src/assets/icons/facebook.svg" alt="facebook" width={24} />
+        <img style={{width: "35px"}}
+        src="src/assets/icons/facebook.svg" alt="facebook" width={24} />
       </IconButton>
 
       <IconButton
@@ -28,7 +29,8 @@ function SocialLinks(){
         href="https://twitter.com"
         target="_blank"
       >
-        <img src="src/assets/icons/twitter.svg" alt="twitter" width={24} />
+        <img style={{width: "35px"}}
+        src="src/assets/icons/twitter.svg" alt="twitter" width={24} />
       </IconButton>
 
       <IconButton
@@ -36,7 +38,8 @@ function SocialLinks(){
         href="https://example.com"
         target="_blank"
       >
-        <img src="src/assets/icons/foto.svg" alt="foto" width={24} />
+        <img style={{width: "35px"}}
+        src="src/assets/icons/foto.svg" alt="foto" width={24} />
       </IconButton>
     </Box>
     )

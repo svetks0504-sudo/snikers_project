@@ -29,12 +29,14 @@ function ProductProvider({ children }) {
       if (!product) return;
 
       await axios.post(`${BASE_URL}/cartData`, {
+        id: product.id,
         name: product.name,
         image: product.image,
         price: product.price
       });
 
         fetchCartData();
+        
     
     }catch (error){
       console.log(error)

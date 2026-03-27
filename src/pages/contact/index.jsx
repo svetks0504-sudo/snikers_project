@@ -1,41 +1,64 @@
 import styles from './styles.module.css'
 import {Box, Button, TextField } from '@mui/material'
 import { useForm } from 'react-hook-form';
+import SocialContact from '../../components/socialContact';
+import { useState } from 'react';
 
 function Contact(){
+const [formData, setFormData] = useState([]);
+
     const {
         register,
         handleSubmit,
-        formState: {errors}
+        formState: {errors},
+        reset,
     } = useForm();
+
+    const onSubmit = (data) => {
+        setFormData((prev)=>[...prev, data]);
+        reset();
+    }
 
     return(
         <Box sx={{ padding: "3vw 13vw" }}>
+
         <Box >
       <h1>Контакты</h1>
       <hr className={styles.lineTop} />
       </Box>
+
       <ul>
         <li>8 800 000 00 00</li>
         <li>emailexample@email.com</li>
       </ul>
 
+      <Box sx={{display: "flex",
+        gap: "3vw",
+        mt: "3vw"
+      }}>
+
       <Box
       component="form"
-      onSubmit={handleSubmit()}
+      onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
-        gap: 2,
-        width: "40vw",
-        mt: "3vw"
+        gap:" 2vw",
+        width: "60%",
+        "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        border: "none",
+      },
+    }
       }}
     >
         <Box sx={{display: "flex", 
             gap:"2vw",
             width:"100%",
+            justifyContent: "center",
+            alignItems: "center"
         }}>
       <TextField
         label="Ваш email"
@@ -44,7 +67,7 @@ function Contact(){
         })}
         error={!!errors.email}
         helperText={errors.email?.message}
-        sx={{width:"100%",
+        sx={{width:"50%",
         backgroundColor: "rgba(250, 250, 250, 1)",
         }}
       />
@@ -55,7 +78,7 @@ function Contact(){
         })}
         error={!!errors.name}
         helperText={errors.name?.message}
-        sx={{width:"100%",
+        sx={{width:"50%",
         backgroundColor: "rgba(250, 250, 250, 1)",
         }}
       />
@@ -73,47 +96,40 @@ function Contact(){
         backgroundColor: "rgba(250, 250, 250, 1)",
         }}
       />
-      <Button type="submit" variant="contained">
+     
+      <Button type="submit" variant="contained"
+      sx={{fontSize: "1.2rem",
+          border: "1px solid rgba(104, 102, 102, 0.5)",
+          color: "black",
+          marginLeft: "auto",
+          minWidth: "30px",
+          backgroundColor: "rgba(233, 233, 233, 0.5)",
+          "&:hover":{
+            backgroundColor: "black",
+          color: "white"} 
+        }}>
         Отправить
       </Button>
     </Box>
 
+
+    <Box sx={{
+      backgroundColor: "rgba(250, 250, 250, 1)",
+      padding: "1vw 3vw 2vw 3vw",
+      height: "220px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "1vw"
+    }}>
+     <p className={styles.textsocial}>Найдите нас:</p>
+  
+      <SocialContact />
+    
+    </Box>
+
+    </Box>
       </Box>
     )
 }
 
 export default Contact;
-
-/*
-
-    <Box
-      component="form"
-      sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
-        <TextField
-          error
-          id="outlined-error"
-          label="Error"
-          defaultValue="Hello World"
-        />
-        <TextField
-          error
-          id="outlined-error-helper-text"
-          label="Error"
-          defaultValue="Hello World"
-          helperText="Incorrect entry."
-        />
-        <TextField
-          error
-          id="filled-error"
-          label="Error"
-          defaultValue="Hello World"
-          variant="filled"
-        />
-      </div>
-    </Box>
-  );
-}*/

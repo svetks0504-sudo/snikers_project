@@ -1,5 +1,6 @@
 import ProductsContext from "../../context";
 import { useContext } from "react";
+import { useState } from "react";
 import styles from './styles.module.css';
 import { Box,
   CardMedia,
@@ -11,6 +12,8 @@ import { Box,
 
 function Main(){
   const {addToCart, products} = useContext(ProductsContext);
+  const [isAdded, setIsAdded] = useState([]);
+
 
     return (
       <div className={styles.mainContainer}>
@@ -30,6 +33,7 @@ function Main(){
     alignItems: "center"}}>
 
     {products.map((elem)=>{
+       
        return (
        <div key={elem.id} 
        className={styles.cart}
@@ -57,7 +61,10 @@ function Main(){
         <p className={styles.priceText}>ЦЕНА:</p>
         <p className={styles.price}>{elem.price} €</p>
         </div>
-        <Button onClick={()=>{addToCart(elem.id)}}
+        <Button onClick={()=>{addToCart(elem.id);
+          setIsAdded((prev) => [...prev, elem.id])
+        }}
+        disabled={(isAdded.includes(elem.id)) ? true : false}
         variant="contained"
         sx={{fontSize: "1.2rem",
           borderRadius: "50%",
@@ -68,10 +75,10 @@ function Main(){
           minWidth: "30px",
           backgroundColor: "rgba(233, 233, 233, 0.5)",
           "&:hover":{
-            backgroundColor: "black",
+          backgroundColor: "black",
           color: "white"} 
         }} >
-          +
+          {(isAdded.includes(elem.id)) ? "✓" : "+"}
         </Button>
       </CardActions>
 
